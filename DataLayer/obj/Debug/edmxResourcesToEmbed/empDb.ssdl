@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="empDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="dept">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="deptName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="EmpTbl">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="empName" Type="varchar" MaxLength="50" />
+    <Property Name="empAge" Type="int" />
+    <Property Name="empSalary" Type="money" />
+    <Property Name="deptId" Type="int" />
+  </EntityType>
+  <Association Name="deptid">
+    <End Role="dept" Type="Self.dept" Multiplicity="0..1" />
+    <End Role="EmpTbl" Type="Self.EmpTbl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dept">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EmpTbl">
+        <PropertyRef Name="deptId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="empDBModelStoreContainer">
+    <EntitySet Name="dept" EntityType="Self.dept" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmpTbl" EntityType="Self.EmpTbl" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="deptid" Association="Self.deptid">
+      <End Role="dept" EntitySet="dept" />
+      <End Role="EmpTbl" EntitySet="EmpTbl" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

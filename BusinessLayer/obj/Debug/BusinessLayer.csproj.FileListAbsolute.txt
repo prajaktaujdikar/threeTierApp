@@ -1,0 +1,13 @@
+E:\.net prac\threeTierApp\BusinessLayer\bin\Debug\empDB.mdf
+E:\.net prac\threeTierApp\BusinessLayer\bin\Debug\empDB_log.ldf
+E:\.net prac\threeTierApp\BusinessLayer\bin\Debug\BusinessLayer.dll
+E:\.net prac\threeTierApp\BusinessLayer\bin\Debug\BusinessLayer.pdb
+E:\.net prac\threeTierApp\BusinessLayer\bin\Debug\DataLayer.dll
+E:\.net prac\threeTierApp\BusinessLayer\bin\Debug\EntityFramework.dll
+E:\.net prac\threeTierApp\BusinessLayer\bin\Debug\EntityFramework.SqlServer.dll
+E:\.net prac\threeTierApp\BusinessLayer\bin\Debug\DataLayer.pdb
+E:\.net prac\threeTierApp\BusinessLayer\bin\Debug\EntityFramework.xml
+E:\.net prac\threeTierApp\BusinessLayer\bin\Debug\EntityFramework.SqlServer.xml
+E:\.net prac\threeTierApp\BusinessLayer\obj\Debug\BusinessLayer.csprojResolveAssemblyReference.cache
+E:\.net prac\threeTierApp\BusinessLayer\obj\Debug\BusinessLayer.dll
+E:\.net prac\threeTierApp\BusinessLayer\obj\Debug\BusinessLayer.pdb

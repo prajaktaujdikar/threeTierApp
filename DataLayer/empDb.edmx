@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="empDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="dept">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="deptName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="EmpTbl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="empName" Type="varchar" MaxLength="50" />
+          <Property Name="empAge" Type="int" />
+          <Property Name="empSalary" Type="money" />
+          <Property Name="deptId" Type="int" />
+        </EntityType>
+        <Association Name="deptid">
+          <End Role="dept" Type="Self.dept" Multiplicity="0..1" />
+          <End Role="EmpTbl" Type="Self.EmpTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dept">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EmpTbl">
+              <PropertyRef Name="deptId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="empDBModelStoreContainer">
+          <EntitySet Name="dept" EntityType="Self.dept" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmpTbl" EntityType="Self.EmpTbl" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="deptid" Association="Self.deptid">
+            <End Role="dept" EntitySet="dept" />
+            <End Role="EmpTbl" EntitySet="EmpTbl" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="empDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="dept">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="deptName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EmpTbls" Relationship="Self.deptid" FromRole="dept" ToRole="EmpTbl" />
+        </EntityType>
+        <EntityType Name="EmpTbl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="empName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="empAge" Type="Int32" />
+          <Property Name="empSalary" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="deptId" Type="Int32" />
+          <NavigationProperty Name="dept" Relationship="Self.deptid" FromRole="EmpTbl" ToRole="dept" />
+        </EntityType>
+        <Association Name="deptid">
+          <End Role="dept" Type="Self.dept" Multiplicity="0..1" />
+          <End Role="EmpTbl" Type="Self.EmpTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dept">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EmpTbl">
+              <PropertyRef Name="deptId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="empDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="depts" EntityType="Self.dept" />
+          <EntitySet Name="EmpTbls" EntityType="Self.EmpTbl" />
+          <AssociationSet Name="deptid" Association="Self.deptid">
+            <End Role="dept" EntitySet="depts" />
+            <End Role="EmpTbl" EntitySet="EmpTbls" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="empDBModelStoreContainer" CdmEntityContainer="empDBEntities">
+          <EntitySetMapping Name="depts">
+            <EntityTypeMapping TypeName="empDBModel.dept">
+              <MappingFragment StoreEntitySet="dept">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="deptName" ColumnName="deptName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmpTbls">
+            <EntityTypeMapping TypeName="empDBModel.EmpTbl">
+              <MappingFragment StoreEntitySet="EmpTbl">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="empName" ColumnName="empName" />
+                <ScalarProperty Name="empAge" ColumnName="empAge" />
+                <ScalarProperty Name="empSalary" ColumnName="empSalary" />
+                <ScalarProperty Name="deptId" ColumnName="deptId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

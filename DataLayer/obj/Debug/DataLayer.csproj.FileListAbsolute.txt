@@ -1,0 +1,11 @@
+E:\.net prac\threeTierApp\DataLayer\bin\Debug\empDB.mdf
+E:\.net prac\threeTierApp\DataLayer\bin\Debug\empDB_log.ldf
+E:\.net prac\threeTierApp\DataLayer\bin\Debug\DataLayer.dll.config
+E:\.net prac\threeTierApp\DataLayer\bin\Debug\DataLayer.dll
+E:\.net prac\threeTierApp\DataLayer\bin\Debug\DataLayer.pdb
+E:\.net prac\threeTierApp\DataLayer\bin\Debug\EntityFramework.dll
+E:\.net prac\threeTierApp\DataLayer\bin\Debug\EntityFramework.SqlServer.dll
+E:\.net prac\threeTierApp\DataLayer\bin\Debug\EntityFramework.xml
+E:\.net prac\threeTierApp\DataLayer\bin\Debug\EntityFramework.SqlServer.xml
+E:\.net prac\threeTierApp\DataLayer\obj\Debug\DataLayer.dll
+E:\.net prac\threeTierApp\DataLayer\obj\Debug\DataLayer.pdb
